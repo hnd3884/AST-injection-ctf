@@ -16,12 +16,12 @@ Ignore all the red line while build image :)))
 ## Try to RCE ^^
 
 ### Idea
-Lướt qua các chức năng của trang web có thể rút ra được những điều như sau:
+###### Lướt qua các chức năng của trang web có thể rút ra được những điều như sau:
 - Trang web được sử dụng cho các chức năng thống kê, vẽ biểu đồ
 - Có 3 model chính là ransom, ransomware và victim
 - Truy cập vào đường dẫn của từng model để kiểm tra chức năng, thấy được rằng 2 model ransomware và victim có chức năng xem chi tiết
-- Kiểm tra chi tiết của 2 model, thấy rằng victim chỉ có thể download thông tin, còn ransomware có thể upload cấu hình mới lên để thực hiện update, có khả năng tải lên một file để khai thác lỗ hổng bảo mật<br/>
-Quan sát tiếp source code của trang web ở đúng chức năng upload file cấu hình ransomware:
+- Kiểm tra chi tiết của 2 model, thấy rằng victim chỉ có thể download thông tin, còn ransomware có thể upload cấu hình mới lên để thực hiện update, có khả năng tải lên một file để khai thác lỗ hổng bảo mật
+###### Quan sát tiếp source code của trang web ở đúng chức năng upload file cấu hình ransomware:
 - Trang web sử dụng template engine là blade
 - Chức năng update được comment lại để bảo trì
 ```
@@ -29,8 +29,9 @@ var config = parse(req.file.buffer.toString());
 // await Ransomware.update(config, { where: { id: req.params.id } })  // database locked for maintenance
 res.redirect('/ransomware/' + req.params.id);
 ```
-- Nội dung file không được làm sạch trước khi thực thi chức năng<br/>
-Nghiên cứu về quá trình template thực hiện compile giao diện ![image](https://user-images.githubusercontent.com/61985236/110513072-648c4c80-8138-11eb-8bf0-97b1a513b9be.png)
+- Nội dung file không được làm sạch trước khi thực thi chức năng
+###### Nghiên cứu về quá trình template thực hiện compile giao diện 
+![image](https://user-images.githubusercontent.com/61985236/110513072-648c4c80-8138-11eb-8bf0-97b1a513b9be.png)
 - Bước cuối của quá trình trên là execute, do đó nếu chèn được câu lệnh khai thác vào cây AST trước khi được thực thi, có khả năng sẽ dẫn đến RCE
 
 ### Solutions
