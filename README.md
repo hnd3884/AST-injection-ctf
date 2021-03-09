@@ -29,7 +29,9 @@ var config = parse(req.file.buffer.toString());
 // await Ransomware.update(config, { where: { id: req.params.id } })  // database locked for maintenance
 res.redirect('/ransomware/' + req.params.id);
 ```
-- Nội dung file không được làm sạch trước khi thực thi ch
+- Nội dung file không được làm sạch trước khi thực thi chức năng<br/>
+Nghiên cứu về quá trình template thực hiện compile giao diện ![image](https://user-images.githubusercontent.com/61985236/110513072-648c4c80-8138-11eb-8bf0-97b1a513b9be.png)
+- Bước cuối của quá trình trên là execute, do đó nếu chèn được câu lệnh khai thác vào cây AST trước khi được thực thi, có khả năng sẽ dẫn đến RCE
 
 ### Solutions
 - Tạo file exploit với nội dung dưới đây và lưu lại
