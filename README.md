@@ -45,4 +45,4 @@ value = "somevalue"
 code = "process.mainModule.require('child_process').execSync('ls')"
 ```
 - Vào trang chi tiết của 1 ransomware bất kỳ, upload file exploit vừa tạo lên
-- Kiểm tra source của trang mới, thấy rằng có thuộc someprop ở các thẻ có giá trị là kết quả của câu lệnh 'ls' được inject ở trong file exloit
+- Kiểm tra source của trang mới, thấy rằng có thuộc someprop ở các thẻ có giá trị là kết quả của câu lệnh 'ls' được inject ở trong file exploit
