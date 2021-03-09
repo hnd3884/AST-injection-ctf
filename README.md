@@ -34,7 +34,7 @@ res.redirect('/ransomware/' + req.params.id);
 ![image](https://user-images.githubusercontent.com/61985236/110513072-648c4c80-8138-11eb-8bf0-97b1a513b9be.png)
 - Bước cuối của quá trình trên là execute, do đó nếu chèn được câu lệnh khai thác vào cây AST trước khi được thực thi, có khả năng sẽ dẫn đến RCE
 
-### Solutions
+### Solution
 - Tạo file exploit với nội dung dưới đây và lưu lại
 ```
 test = 'Hey universe'
