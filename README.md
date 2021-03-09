@@ -1,9 +1,9 @@
 # AST-injection-ctf
-Demo AST injection in Nodejs app.
+Demo AST injection in Nodejs app. <br/>
 Docker and docker-compose required!
 
 ###### Build nodejs app image
-`docker build -t demo-ctf .`
+`docker build -t demo-ctf .`<br/>
 Ignore all the red line while build image :)))
 
 ###### Up docker-compose
