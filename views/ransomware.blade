@@ -1,0 +1,41 @@
+include "layout.blade"
+
+block content  
+  main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4(role='main')
+    h3 #{ransomware.name}
+    .table-responsive
+      table.table.table-striped
+        tbody
+          tr
+          th ID
+          td #{ransomware.id}
+          tr
+          th Name
+          td #{ransomware.name}
+          tr
+          th Callback IP
+          td #{ransomware.callbackIp}
+          tr
+          th Support Email
+          td #{ransomware.supportEmail}
+          tr
+          th Version
+          td #{ransomware.version}
+          tr
+          th Payload
+          td #{ransomware.payload}
+    h4 Download Config
+    a.btn.btn-primary(href="/ransomware/"+ransomware.id+'/config' role='button') Download
+    h4 Upload Config
+    form(action="/ransomware/"+ransomware.id+'/config', method="post", enctype="multipart/form-data")
+      .custom-file
+        input#attachment.custom-file-input(type='file' name='config')
+        label.custom-file-label(for='config') Choose file
+        button.btn.btn-primary(type='submit') Upload
+
+  :javascript
+    $(".custom-file-input").on("change", function() {
+      var fileName = $(this).val().split("\\").pop();
+      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+

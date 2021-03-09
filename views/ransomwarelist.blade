@@ -1,0 +1,28 @@
+include "layout.blade"
+
+block content  
+  main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4(role='main')
+    .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+      h1.h2 #{title}
+      .btn-toolbar.mb-2.mb-md-0
+        .btn-group.mr-2
+          a.btn.btn-sm.btn-outline-secondary(href="/ransomware/export" role='button') Export
+    h2 Latest Ransoms
+    .table-responsive
+      table.table.table-striped.table-sm
+        thead
+          tr
+            th #
+            th Name
+            th Callback IP
+            th Support Email
+            th Version
+        tbody
+          foreach ransomwares as ransomware
+            tr
+            td= ransomware.id
+            td
+              a(href='/ransomware/'+ransomware.id) #{ransomware.name}
+            td= ransomware.callbackIp
+            td= ransomware.supportEmail
+            td= ransomware.version

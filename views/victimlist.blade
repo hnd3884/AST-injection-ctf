@@ -1,0 +1,32 @@
+include "layout.blade"
+
+block content  
+  main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4(role='main')
+    .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+      h1.h2 #{title}
+      .btn-toolbar.mb-2.mb-md-0
+        .btn-group.mr-2
+          a.btn.btn-sm.btn-outline-secondary(href="/victim/export" role='button') Export
+    h2 Latest Victims
+    .table-responsive
+      table.table.table-striped.table-sm
+        thead
+          tr
+            th #
+            th Hostname
+            th IP
+            th Email
+            th Ransom
+            th Encryption Key
+            th Paid?
+        tbody
+          foreach victims as victim
+            tr
+            td= victim.id
+            td
+              a(href='/victim/'+victim.id) #{victim.hostname}
+            td= victim.ipAddress
+            td= victim.email
+            td= victim.ransomSum
+            td= victim.encyptionKey
+            td= victim.hasPaid

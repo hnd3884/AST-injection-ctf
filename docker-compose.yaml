@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  db:
+    image: mysql:latest
+    hostname: democtf_db
+    container_name: democtf_db
+    # volumes:
+    #   - democtf_data:/var/lib/mysql
+    restart: always
+    
+    environment:
+      MYSQL_ROOT_PASSWORD: hoang123
+      MYSQL_DATABASE: democtf
+      MYSQL_USER: democtf
+      MYSQL_PASSWORD: hoang123
+
+  democtf:
+    depends_on:
+      - db
+    image: demo-ctf:latest
+    container_name: democtf_app
+    # volumes:
+    #   - democtf_files:/usr/src/app
+    ports:
+      - "3000:3000"
+    restart: always
+    command: bash -c "npx sequelize-cli db:migrate:status && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all && node ./bin/www"
+    # environment:
+    #   WORDPRESS_DB_HOST: db:3306
+    #   WORDPRESS_DB_USER: democtf
+    #   WORDPRESS_DB_PASSWORD: hoang123
+# volumes:
+#   democtf_files:
+#   democtf_data:

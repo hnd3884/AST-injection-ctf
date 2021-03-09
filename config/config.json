@@ -1,0 +1,18 @@
+{
+  "development": {
+    "username": "democtf",
+    "password": "hoang123",
+    "database": "democtf",
+    "host": "democtf_db",
+    "port": 3306,
+    "dialect": "mysql"
+  },
+  "test": {
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "mariadb"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "mariadb"
+  }
+}

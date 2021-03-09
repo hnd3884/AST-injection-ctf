@@ -1,0 +1,38 @@
+include "layout.blade"
+
+block content  
+  main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4(role='main')
+    h3 #{victim.hostname}
+    .table-responsive
+      table.table.table-striped
+        tbody
+          tr
+          th ID
+          td #{ victim.id}
+          tr
+          th Hostname
+          td #{ victim.hostname}
+          tr
+          th IP
+          td #{ victim.ipAddress}
+          tr
+          th Email
+          td #{ victim.email}
+          tr
+          th Ransom Sum
+          td #{ victim.ransomSum}
+          tr
+          th Encryption Key
+          td #{ victim.encyptionKey}
+          tr
+          th Paid?
+          td #{ victim.hasPaid}
+    h4 Download Details
+    a.btn.btn-primary(href="/victim/"+victim.id+'/detail' role='button') Download
+
+  :javascript
+    $(".custom-file-input").on("change", function() {
+      var fileName = $(this).val().split("\\").pop();
+      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+
